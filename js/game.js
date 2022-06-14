@@ -6,7 +6,7 @@ function addGridSquares(width, height) {
     for(let i = 0; i < width; i++) {
         for(let j = 0; j < height; j++) {
             const div = document.createElement('div');
-            div.textContent = String(i) + String(j);
+            div.style.border = '1px solid black';
             gridContainer.appendChild(div);
         }
     }
