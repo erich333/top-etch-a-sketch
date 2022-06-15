@@ -7,6 +7,8 @@ function addGridSquares(width, height) {
         for(let j = 0; j < height; j++) {
             const div = document.createElement('div');
             div.style.border = '1px solid black';
+            div.addEventListener('mouseover', (e) => 
+                e.target.classList.add('coloredIn'));
             gridContainer.appendChild(div);
         }
     }
