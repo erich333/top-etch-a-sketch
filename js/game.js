@@ -1,6 +1,7 @@
 // Assume grid is square, and sizes are for a side
 const GRIDSIZEINPIXELS = 400;
-let   defaultGridSizeInCells = 25;
+let   gridSizeInCells = 25;
+addGridSquares(gridSizeInCells);
 
 function addGridSquares(sideLengthInCells) {
     const gridContainer = document.querySelector('.container');
@@ -20,5 +21,3 @@ function addGridSquares(sideLengthInCells) {
         }
     }
 }
-
-addGridSquares(defaultGridSizeInCells);
