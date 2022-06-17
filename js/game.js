@@ -1,13 +1,17 @@
 // Assume grid is square, and sizes are for a side
 const GRIDSIZEINPIXELS = 400;
+const MAXGRIDSIZEINCELLS = 100;
 let   gridSizeInCells = 25;
+
 addGridSquares(gridSizeInCells);
+const resizeButton = document.querySelector('#resizeButton');
+resizeButton.addEventListener('click', resizeGrid);
 
 function addGridSquares(sideLengthInCells) {
     const gridContainer = document.querySelector('.container');
     const cellSizeInPixels = GRIDSIZEINPIXELS / sideLengthInCells;
-    
-    const gridStyleString = `repeat(${sideLengthInCells}, ${cellSizeInPixels}px)`;
+    const gridStyleString = 
+        `repeat(${sideLengthInCells}, ${cellSizeInPixels}px)`;
     gridContainer.style.gridTemplateColumns = gridStyleString;
     gridContainer.style.gridTemplateRows = gridStyleString;
 
@@ -20,4 +24,33 @@ function addGridSquares(sideLengthInCells) {
             gridContainer.appendChild(div);
         }
     }
+}
+
+function resizeGrid() {
+    const newSizeInCells = getUserInput();
+    clearGrid();
+    addGridSquares(newSizeInCells);
+}
+
+function clearGrid() {
+    const gridDivs = document.querySelectorAll('.container div');
+    gridDivs.forEach(gridDiv => gridDiv.remove());
+}
+
+function getUserInput() {
+    let keepGoing = true;
+    let newSizeInCells = 0;
+    while(keepGoing) {
+        newSizeInCells = 
+            prompt(`Enter new grid size between 1 and ${MAXGRIDSIZEINCELLS}:`);
+        newSizeInCells = Number(newSizeInCells);
+        if(isNaN(newSizeInCells)
+            || newSizeInCells > MAXGRIDSIZEINCELLS 
+            || newSizeInCells <= 0) {
+            keepGoing = true;
+        } else {
+            keepGoing = false;
+        }
+    }
+    return newSizeInCells;
 }
