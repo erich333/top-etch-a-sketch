@@ -28,11 +28,11 @@ function addGridSquares(sideLengthInCells) {
 
 function resizeGrid() {
     const newSizeInCells = getUserInput();
-    clearGrid();
+    removeGridSquares();
     addGridSquares(newSizeInCells);
 }
 
-function clearGrid() {
+function removeGridSquares() {
     const gridDivs = document.querySelectorAll('.container div');
     gridDivs.forEach(gridDiv => gridDiv.remove());
 }
